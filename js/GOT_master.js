@@ -60,8 +60,8 @@
 		topBanners.style.right = currentOffset + "px";
 
 		// Change the text content on the page per house
-		tagline.textContent   = `House ${houseData[0][0]}`;
-		houseInfo.textContent =  houseData[0][1];
+		tagline.textContent   = `House ${houseData[this.dataset.offset][0]}`;
+		houseInfo.textContent =  houseData[this.dataset.offset][1];
 	}
 
 	// sigils.forEach(sigil => sigil.addEventListener('click', openLightbox));
