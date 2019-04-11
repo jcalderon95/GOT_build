@@ -57,11 +57,14 @@
 		const offSet = 600;
 		let currentOffset = this.dataset.offset * offSet;
 
-		topBanners.style.right = currentOffset + "px";
+		// topBanners.style.right = currentOffset + "px";
+		TweenMax.to(topBanners, 0.2, { right: currentOffset});
 
 		// Change the text content on the page per house
 		tagline.textContent   = `House ${houseData[this.dataset.offset][0]}`;
 		houseInfo.textContent =  houseData[this.dataset.offset][1];
+
+
 	}
 
 	// sigils.forEach(sigil => sigil.addEventListener('click', openLightbox));
