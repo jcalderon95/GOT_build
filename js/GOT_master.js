@@ -30,15 +30,7 @@
 
 	function openLightbox() {
 		// debugger;
-		let targetHouse = this.className.split(" ")[1];
-
-		// ths gives us a lower case house name -> the second class on all of the shields 
-		// ie stark, baerthon
-
-		// flip this to uppercase
-		let targetVid = targetHouse.charAt(0).toUpperCase() + targetHouse.slice(1);
-
-		video.src = `video/House-${targetVid}.mp4`;
+		
 		lightbox.classList.add('lightbox-on');
 		video.load();
 		video.play();
@@ -60,11 +52,24 @@
 		// topBanners.style.right = currentOffset + "px";
 		TweenMax.to(topBanners, 0.2, { right: currentOffset});
 
+		// tagline and house info animation
+		TweenLite.from(tagline, 1, {x:-200, opacity: 0, delay: 0.5});
+		TweenLite.from(houseInfo, 1, {y:40, opacity: 0, delay: 1, onComplete: openLightbox});
+
+
 		// Change the text content on the page per house
 		tagline.textContent   = `House ${houseData[this.dataset.offset][0]}`;
 		houseInfo.textContent =  houseData[this.dataset.offset][1];
 
+		let targetHouse = this.className.split(" ")[1];
 
+		// ths gives us a lower case house name -> the second class on all of the shields 
+		// ie stark, baerthon
+
+		// flip this to uppercase
+		let targetVid = targetHouse.charAt(0).toUpperCase() + targetHouse.slice(1);
+
+		video.src = `video/House-${targetVid}.mp4`;
 	}
 
 	// sigils.forEach(sigil => sigil.addEventListener('click', openLightbox));
