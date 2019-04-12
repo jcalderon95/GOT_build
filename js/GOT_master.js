@@ -61,18 +61,16 @@
 		tagline.textContent   = `House ${houseData[this.dataset.offset][0]}`;
 		houseInfo.textContent =  houseData[this.dataset.offset][1];
 
-		let targetHouse = this.className.split(" ")[1];
-
 		// ths gives us a lower case house name -> the second class on all of the shields 
 		// ie stark, baerthon
+		let targetHouse = this.className.split(" ")[1];
 
 		// flip this to uppercase
 		let targetVid = targetHouse.charAt(0).toUpperCase() + targetHouse.slice(1);
 
 		video.src = `video/House-${targetVid}.mp4`;
 	}
-
-	// sigils.forEach(sigil => sigil.addEventListener('click', openLightbox));
+	
 
 	// animate the banners at the top
 	sigils.forEach(sigil => sigil.addEventListener('click', animateBanners));
