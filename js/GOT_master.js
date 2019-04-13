@@ -8,7 +8,10 @@
 		  lbClose	 =	document.querySelector('.lightbox-close'),
 		  topBanners =  document.querySelector('#houseImages'),
 		  tagline	 =  document.querySelector('.house-name'),
-		  houseInfo  =  document.querySelector('.house-info');
+		  houseInfo  =  document.querySelector('.house-info'),
+		  play		 =  document.querySelector('#play'),
+		  pause		 =  document.querySelector('#pause'),
+		  rewind	 =  document.querySelector('#rewind');
 
 	const houseData = [
 		[`stark`, `House Stark of Winterfell is a Great House of Westeros, ruling over the vast region known as the North from their seat in Winterfell. It is one of the oldest lines of Westerosi nobility by far, claiming a line of descent stretching back over eight thousand years. Before the Targaryen conquest, as well as during the War of the Five Kings and Daenerys Targaryen's invasion of Westeros, the leaders of House Stark ruled over the region as the Kings in the North.`],
@@ -70,11 +73,33 @@
 
 		video.src = `video/House-${targetVid}.mp4`;
 	}
+
+	// Video controls
+
+	function playVid () {
+		console.log('play');
+		video.play();
+	}
 	
+	function pauseVid () {
+		console.log('pause');
+
+		video.pause(true);
+	}
+
+	function rewindVid () {
+		console.log('rewind');
+
+		video.currentTime = 0;
+		playVid();
+	}
 
 	// animate the banners at the top
 	sigils.forEach(sigil => sigil.addEventListener('click', animateBanners));
 
 	video.addEventListener('ended', closeLightbox);
 	lbClose.addEventListener('click', closeLightbox);
+	play.addEventListener('click', playVid);
+	pause.addEventListener('click', pauseVid);
+	rewind.addEventListener('click', rewindVid);
 })();
